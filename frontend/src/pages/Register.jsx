@@ -11,7 +11,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/auth/register', { name, email, password });
+      const res = await axios.post('https://basic-e-commerce-y6t9.onrender.com/auth/register', { name, email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/');
     } catch (err) {

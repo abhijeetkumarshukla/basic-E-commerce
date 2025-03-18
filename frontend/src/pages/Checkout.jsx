@@ -3,10 +3,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 
-// Load Stripe.js
+ 
 const stripePromise = loadStripe('pk_test_51R41GMRrqIKYoWMOTt02YbWfsMnNWN4ebKAR0xPpaVnKImk1Btqoo1WHK7AdSgCvAl0Hs3VP3gHKyUOlKdHFQkVR00FmUtHz1W'); // Replace with your Stripe publishable key
 
-// Checkout Form Component
+ 
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
@@ -17,19 +17,19 @@ const CheckoutForm = () => {
     event.preventDefault();
 
     if (!stripe || !elements) {
-      return; // Stripe.js has not loaded yet
+      return;  
     }
 
     setLoading(true);
     setError(null);
 
     try {
-      // Create a PaymentIntent on the server
-      const response = await axios.post('http://localhost:5000/orders/payment', {
+     
+      const response = await axios.post('https://basic-e-commerce-y6t9.onrender.com/payment', {
         amount: 1000, // Amount in cents (e.g., $10.00)
       });
 
-      // Confirm the payment on the client side
+      
       const { error: stripeError, paymentIntent } = await stripe.confirmCardPayment(
         response.data.clientSecret,
         {
@@ -88,7 +88,7 @@ const CheckoutForm = () => {
   );
 };
 
-// Main Checkout Component
+ 
 const Checkout = () => {
   return (
     <div className="p-4">

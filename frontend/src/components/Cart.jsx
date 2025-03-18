@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { removeItem } from '../redux/cartSlice'; // Import the removeItem action
+import { removeItem } from '../redux/cartSlice'; 
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
@@ -8,12 +8,12 @@ const Cart = () => {
   const navigate = useNavigate();
 
   const handleCheckout = () => {
-    navigate('/checkout'); // Redirect to the Checkout page
+    navigate('https://basic-e-commerce-y6t9.onrender.com/checkout');  
   };
 
   const handleRemoveItem = (itemId) => {
-    console.log('Removing item with ID:', itemId); // Log the item ID
-    dispatch(removeItem(itemId)); // Dispatch the removeItem action
+    console.log('Removing item with ID:', itemId);  
+    dispatch(removeItem(itemId));  
   };
 
   return (
@@ -25,7 +25,7 @@ const Cart = () => {
           <p className="text-gray-600">{item.description}</p>
           <p className="text-lg font-bold">${item.price}</p>
           <button
-            onClick={() => handleRemoveItem(item._id)} // Add the Remove Button
+            onClick={() => handleRemoveItem(item._id)} 
             className="bg-red-500 text-white px-4 py-2 rounded mt-2"
           >
             Remove

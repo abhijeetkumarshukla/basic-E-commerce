@@ -8,9 +8,9 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/products") // Use the full backend URL
+    axios.get("https://basic-e-commerce-y6t9.onrender.com/products")  
       .then((res) => {
-        console.log("API Response:", res.data); // Log the response data
+        console.log("API Response:", res.data);  
         setProducts(res.data);
       })
       .catch((err) => {
